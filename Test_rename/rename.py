@@ -9,16 +9,22 @@ def get_subdirectories ():
     return list_directory
 
 #переименование файлов и папок в текущей директории
+#!!! дописать функцию согласно примера ниже
 def renaming(directory):
     bad_symbols = input('Введите текст, который нужно удалить\n')
-    name_files = []
+    new_name_list = []
     for i in list(os.listdir(directory)):
         if bad_symbols in i:
             os.rename(i, i - bad_symbols)
 
 
 
+#Пример для функции "renaming"
+d = ['[Example] Text_1', '[Example] Text_2']
+new = []
+for i in d:
+    if '[Example] ' in i:
+        a = i.replace('[Example] ', '')
+        new.append(a)
+print(new)
 
-d = os.getcwd()
-    
-print(d)
