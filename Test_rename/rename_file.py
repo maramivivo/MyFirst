@@ -7,13 +7,7 @@ bad_list = ['[Отборные Сливы] ', '[MEGASLIV.BIZ] ', '[sharewood.ban
             '[SuperSliv.BiZ] ', '[BOOMINFO.ORG] ', '[Example] ']
 
 def rename():
-##    bad_list = ['[Отборные Сливы] ', '[MEGASLIV.BIZ] ', '[sharewood.band] ',
-##            '[sharewood.biz] ', '[share-wood.biz] ', '[slivoman.com] ',
-##            '[BOOMINFO.RU] ', '[Infosklad.org] ', '[sliwbl.biz] ',
-##            '[Boominfo.ORG] ', '[www.slifki.info] ', '[SW.BAND] ',
-##            '[SuperSliv.BiZ] ', '[BOOMINFO.ORG] ', '[Example] ']
-    
-    def foo(files_folders):#, bad_list):
+    def foo(files_folders):
         for name in files_folders:
             for el in bad_list:
                 if el in name:
@@ -25,10 +19,8 @@ def rename():
         os.chdir(directory)
         foo(folders)
         foo(files)
-
     print('>>> Все папки и файлы переименованы <<<')
     
-
 print('\nИз названий папок и файлов будут удалены следующие сочатния символов:')
 for i in bad_list:
     print(i)
