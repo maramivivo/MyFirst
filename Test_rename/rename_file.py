@@ -2,7 +2,7 @@ import os
 '''
 По факту происходит переименование нескольких верхних уровней, в глубь скрипт не идёт (Почему!?)
 '''
-
+input('Нажмите "Enter" для запуска файла')
 bad_list = ['[Отборные Сливы] ', '[MEGASLIV.BIZ] ', '[sharewood.band] ',
             '[sharewood.biz] ', '[share-wood.biz] ', '[slivoman.com] ',
             '[BOOMINFO.RU] ', '[Infosklad.org] ', '[sliwbl.biz] ',
@@ -10,32 +10,22 @@ bad_list = ['[Отборные Сливы] ', '[MEGASLIV.BIZ] ', '[sharewood.ban
             '[SuperSliv.BiZ] ', '[BOOMINFO.ORG] ', '[Example] ']
 startdir = os.getcwd()
 
-def my_rename():
-    for directory, folder, file in os.walk(os.getcwd()): # начало цикла из текущей директории (где находится файл)
+def func():
+    reverse_walk = list(os.walk(os.getcwd()))[::-1]
+    for directory, folders, files in reverse_walk:
+##        print(directory, folders, files, sep = '\n', end = '\n===\n\n')
         os.chdir(directory)
-        for f in file:
-            if file:
-                for i in bad_list:
-                    if i in f:
-                        new_f = f.replace(i, '')
-                        os.rename(f, new_f)
-        print('Переименование файлов завершено\n\n')
+        for folder in folders:
+            for el in bad_list:
+                if el in folder:
+                    new_folder = folder.replace(el, '')
+                    os.rename(folder, new_folder)
+        print('Все папки переименованы\n')
 
-        for fold in folder:
-            if folder:
-                for i in bad_list:
-                    if i in fold:
-                        new_fold = fold.replace(i, '')
-                        try:
-                            os.rename(fold, new_fold)
-                        except:
-                            continue
-        print('Переименование папок завершено\n')
-        
-    os.chdir(startdir)
-            
-
-my_rename()
-print('\n=========================================\n\nПереименование всех данных завершено')
-print(os.getcwd())
-input()
+        for file in files:
+            for el in bad_list:
+                if el in file:
+                    new_file = file.replace(el, '')
+                    os.rename(file, new_file)
+        print('Все файлы переименованы')
+func()
