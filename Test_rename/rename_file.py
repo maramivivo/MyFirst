@@ -1,4 +1,4 @@
-import os
+import os, traceback
 
 bad_list = ['[Отборные Сливы] ', '[MEGASLIV.BIZ] ', '[sharewood.band] ',
             '[sharewood.biz] ', '[share-wood.biz] ', '[slivoman.com] ',
@@ -12,8 +12,11 @@ def rename():
             for el in bad_list:
                 if el in name:
                     new_name = name.replace(el, '')
-                    os.rename(name, new_name)
-
+                    try:
+                        os.rename(name, new_name)
+                    except FileExistsError:
+                        print(traceback.print_exc(limit=0))
+                                                
     reverse_walk = list(os.walk(os.getcwd()))[::-1]
     for directory, folders, files in reverse_walk:
         os.chdir(directory)
