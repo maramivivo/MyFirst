@@ -11,7 +11,7 @@ remove_list = ['MEGASLIV.BIZ - Качай курсы беслпатно!.url',
                'SHAREWOOD_ZERKALO_COM_90000_курсов_на_нашем_форуме!.url',
                '[www.slifki.info]Спасибо за загрузку!.docx',
                '[MEGASLIV.BIZ] Обязательно к прочтению.docx',
-               'Обязательно к прочтению.docx'
+               'Обязательно к прочтению.docx',
                '[SW.BAND] Прочти перед изучением!.docx',
                'Прочти перед изучением!.docx'
                '[slivoman.com] До изучения.docx',
