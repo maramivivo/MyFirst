@@ -11,3 +11,10 @@ bad_list = ['[Отборные Сливы] ', '[MEGASLIV.BIZ] ', '[sharewood.ban
 bad_list.sort()
 a = bad_list
 print(a)
+
+
+['[BOOMINFO.ORG] ', '[BOOMINFO.RU] ', '[Boominfo.ORG] ',
+ '[Example] ', '[Infosklad.org] ', '[MEGASLIV.BIZ] ',
+ '[SW.BAND] ', '[SuperSliv.BiZ] ', '[share-wood.biz] ',
+ '[sharewood.band] ', '[sharewood.biz] ', '[slivoman.com] ',
+ '[sliwbl.biz] ', '[www.slifki.info] ', '[Отборные Сливы] ']
