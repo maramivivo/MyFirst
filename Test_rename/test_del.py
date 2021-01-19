@@ -1,20 +1,24 @@
-import os
+def decorator_1(foo): #remove
+    def decorator_2(files_folders):
+        for name in files_folders:
+            foo()
+        
+        
+            
+    reverse_walk = list(os.walk(os.getcwd()))[::-1]
+    for directory, folders, files in reverse_walk:
+        os.chdir(directory)
+        foo_remove(files)
+    print('>>> Лишние файлы удалены\n')
 
-#os.remove('MEGASLIV.BIZ - Качай курсы беслпатно!.url')
+
+def rename():
 
 
-bad_list = ['[Отборные Сливы] ', '[MEGASLIV.BIZ] ', '[sharewood.band] ',
-            '[sharewood.biz] ', '[share-wood.biz] ', '[slivoman.com] ',
-            '[BOOMINFO.RU] ', '[Infosklad.org] ', '[sliwbl.biz] ',
-            '[Boominfo.ORG] ', '[www.slifki.info] ', '[SW.BAND] ',
-            '[SuperSliv.BiZ] ', '[BOOMINFO.ORG] ', '[Example] ']
-bad_list.sort()
-a = bad_list
-print(a)
-
-
-['[BOOMINFO.ORG] ', '[BOOMINFO.RU] ', '[Boominfo.ORG] ',
- '[Example] ', '[Infosklad.org] ', '[MEGASLIV.BIZ] ',
- '[SW.BAND] ', '[SuperSliv.BiZ] ', '[share-wood.biz] ',
- '[sharewood.band] ', '[sharewood.biz] ', '[slivoman.com] ',
- '[sliwbl.biz] ', '[www.slifki.info] ', '[Отборные Сливы] ']
+def foo():
+for el in remove_list:
+    if el == name:
+        try:
+            os.remove(name)
+        except:
+             print(traceback.print_exc(limit=0))

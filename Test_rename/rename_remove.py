@@ -6,7 +6,7 @@ bad_list = ['[BOOMINFO.ORG] ', '[BOOMINFO.RU] ', '[Boominfo.ORG] ',
             '[sharewood.band] ', '[sharewood.biz] ', '[slivoman.com] ',
             '[sliwbl.biz] ', '[www.slifki.info] ', '[Отборные Сливы] ']
 
-# список названий файлов, подлежащих удалению
+# список названий файлов для удаления
 remove_list = ['MEGASLIV.BIZ - Качай курсы беслпатно!.url',
                'SHAREWOOD_ZERKALO_COM_90000_курсов_на_нашем_форуме!.url',
                '[www.slifki.info]Спасибо за загрузку!.docx',
