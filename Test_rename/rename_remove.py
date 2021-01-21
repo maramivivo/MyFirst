@@ -4,7 +4,8 @@ bad_list = ['[BOOMINFO.ORG] ', '[BOOMINFO.RU] ', '[Boominfo.ORG] ',
             '[Example] ', '[Infosklad.org] ', '[MEGASLIV.BIZ] ',
             '[SW.BAND] ', '[SuperSliv.BiZ] ', '[share-wood.biz] ',
             '[sharewood.band] ', '[sharewood.biz] ', '[slivoman.com] ',
-            '[sliwbl.biz] ', '[www.slifki.info] ', '[Отборные Сливы] ']
+            '[sliwbl.biz] ', '[www.slifki.info] ', '[Отборные Сливы] ',
+            '[Sharewood.biz] ']
 
 # список названий файлов для удаления
 remove_list = ['MEGASLIV.BIZ - Качай курсы беслпатно!.url',
@@ -22,17 +23,18 @@ def remove_files():
         for name in files:
             for el in remove_list:
                 if el == name:
-                    try:
-                        os.remove(name)
-                    except:
-                        print(traceback.print_exc(limit=0))
+                    os.remove(name)
+##                    try:
+##                        os.remove(name)
+##                    except:
+##                        print(traceback.print_exc(limit=0))
 
     reverse_walk = list(os.walk(os.getcwd()))[::-1]
     for directory, folders, files in reverse_walk:
         os.chdir(directory)
         foo_remove(files)
     print('\n>>> Лишние файлы удалены')
-
+    
 
 def rename():
     def foo_rename(files_folders):
@@ -52,7 +54,7 @@ def rename():
         os.chdir(directory)
         foo_rename(files)
         foo_rename(folders)
-    print('\n>>> Все папки и файлы переименованы')
+    print('\n>>> Все папки и файлы переименованы\n')
 
 
 def chek():
@@ -68,9 +70,10 @@ def chek():
     for directory, folders, files in reverse_walk:
         os.chdir(directory)
         foo_chek(files)
-    print('>>> Необходимо проверить следующие файлы (удалить?):')
-    for i in print_chek:
-        print('|',i)
+    if print_chek:
+        print('>>> Необходимо проверить следующие файлы (удалить?):')
+        for i in print_chek:
+            print('|',i)
 
 print('\nИз названий папок и файлов будут удалены следующие сочатния символов:')
 for i in bad_list:
@@ -81,9 +84,9 @@ for i in remove_list:
     print('->', i)
 input('\nНажмите "Enter" для запуска файла\n')
 
-chek()
 remove_files()
 rename()
+chek()
 
 input('\nНажмите "Enter" для выхода')
 
