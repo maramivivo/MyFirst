@@ -10,7 +10,8 @@ bad_list = ['[BOOMINFO.ORG] ', '[BOOMINFO.RU] ', '[Boominfo.ORG] ',
 # список названий файлов для удаления
 remove_list = ['MEGASLIV.BIZ - Качай курсы беслпатно!.url',
                'SHAREWOOD_ZERKALO_COM_90000_курсов_на_нашем_форуме!.url',
-               'SHAREWOOD_BIZ_Качай_популярные_курсы.url'
+               'SHAREWOOD_BIZ_Качай_популярные_курсы.url',
+               'Open-Hide.biz.url',
                '[www.slifki.info]Спасибо за загрузку!.docx',
                '[MEGASLIV.BIZ] Обязательно к прочтению.docx',
                '[SW.BAND] Прочти перед изучением!.docx',
