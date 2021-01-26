@@ -5,11 +5,12 @@ bad_list = ['[BOOMINFO.ORG] ', '[BOOMINFO.RU] ', '[Boominfo.ORG] ',
             '[SW.BAND] ', '[SuperSliv.BiZ] ', '[share-wood.biz] ',
             '[sharewood.band] ', '[sharewood.biz] ', '[slivoman.com] ',
             '[sliwbl.biz] ', '[www.slifki.info] ', '[Отборные Сливы] ',
-            '[Sharewood.biz] ']
+            '[Sharewood.biz] ', '[Sharewood.band] ']
 
 # список названий файлов для удаления
 remove_list = ['MEGASLIV.BIZ - Качай курсы беслпатно!.url',
                'SHAREWOOD_ZERKALO_COM_90000_курсов_на_нашем_форуме!.url',
+               'SHAREWOOD_BAND_Платное_теперь_бесплатно!.url',
                'SHAREWOOD_BIZ_Качай_популярные_курсы.url',
                'Open-Hide.biz.url',
                '[www.slifki.info]Спасибо за загрузку!.docx',
