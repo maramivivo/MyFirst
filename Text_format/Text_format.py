@@ -2,6 +2,7 @@ import pyperclip
 
 file = open(r'Текст.txt', 'r', encoding='utf8')
 text = file.read()
+
 text = text.lower()
 choice = int(input('Введите:\nДля преобразования "ОФЕРТ" -------- >>> 1 <<<\nДля преобразования "ID" ----------- >>> 2 <<<\nДля преобразования другого текста - >>> 3 <<<\n'))
 print('')
