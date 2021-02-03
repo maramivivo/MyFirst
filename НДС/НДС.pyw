@@ -33,7 +33,7 @@ def asd(x):
     else:
         result_vew = result + ' ₽'
     copy_result()
-    result_win = tk.Button(win, text=result_vew, font=('Comic Sans MS', 25), fg='navy', command=copy_result)
+    result_win = tk.Button(win, text=result_vew, font=('Comic Sans MS', 20), fg='grey', command=copy_result)
     result_win.place(x=5, y=65, height=85, width=290)
 
 
@@ -47,7 +47,7 @@ def foo_nds_20():
 
 def clear():
     entry.delete(0, 'end')
-    result_win = tk.Button(win, text='', font=('Comic Sans MS', 25), fg='navy')
+    result_win = tk.Button(win, text='Введите сумму', font=('Comic Sans MS', 20), fg='grey')
     result_win.place(x=5, y=65, height=85, width=290)
 
 def clear_esc(event):
