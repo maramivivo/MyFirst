@@ -62,8 +62,8 @@ win = tk.Tk()
 win.title('Калькулятор Налогов')
 win.geometry('550x215+890+320')
 win.resizable(False, False)
-win.wm_iconbitmap('icon.ico')
 ##win.attributes('-topmost', True) # расположение поверх всех окон
+win.wm_iconbitmap('icon.ico')
 
 enter = tk.Label(win, text='Введите сумму с налогом:', font=('Comic Sans MS', 12), fg='grey43')
 entry = tk.Entry(win, bg='white', bd=2, font=('Comic Sans MS', 20), justify='right', fg='grey45')
