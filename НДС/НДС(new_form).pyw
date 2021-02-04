@@ -19,10 +19,10 @@ def copy_input():
 
 def clear():
     entry.delete(0, 'end')
-    result_win_10 = tk.Button(win, text='Введите сумму\nдля расчёта', font=('Comic Sans MS', 20), fg='navy')
-    result_win_10.place(x=5, y=85, height=105, width=305)
-##    result_win_20 = tk.Button(win, text='', font=('Comic Sans MS', 20), fg='navy')
-    #result_win_20.place(x=160, y=85, height=105, width=150)
+    result_win = tk.Button(win, text='Введите сумму\nдля расчёта',
+                           font=('Comic Sans MS', 20), fg='navy')
+    result_win.place(x=5, y=85, height=105, width=305)
+
 
 def clear_esc(event):
     clear()
@@ -34,6 +34,7 @@ def clear_clipboard(event):
 
 
 def foo_nds():
+    result_win.place_forget()
     def asd_10(tax):
         def copy_result():
             if result != 'Введите сумму':
@@ -48,6 +49,7 @@ def foo_nds():
             result_vew = result + ' ₽'
         result_win_10 = tk.Button(win, text=result_vew, font=('Comic Sans MS', 20),
                                       fg='navy', command=copy_result)
+        
         result_win_10.place(x=5, y=85, height=105, width=150)
     def asd_20(tax):
         def copy_result():
@@ -63,6 +65,7 @@ def foo_nds():
             result_vew = result + ' ₽'
         result_win_20 = tk.Button(win, text=result_vew, font=('Comic Sans MS', 20),
                                   fg='navy', command=copy_result)
+        
         result_win_20.place(x=160, y=85, height=105, width=150)
     asd_10(10)
     asd_20(20)  
@@ -78,6 +81,13 @@ win.title('Калькулятор Налогов')
 win.geometry('550x215+960+420')
 win.resizable(0, 0)
 win.wm_iconbitmap('icon.ico')
+
+
+result_win = tk.Button(win, text='', font=('Comic Sans MS', 20), fg='navy')
+result_win.place(x=5, y=85, height=105, width=305)
+result_win.place_forget()
+
+
 
 entry = tk.Entry(win, bg='white', bd=2,
                  font=('Comic Sans MS', 20), justify='right', fg='grey45')
