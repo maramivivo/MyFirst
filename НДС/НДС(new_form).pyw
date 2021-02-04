@@ -3,11 +3,11 @@ import pyperclip
 
 def convert_nalog(summ, tax):
     nds = round(summ*tax/(100+tax), 2)
-    if float(nds) == int(nds):
-        nds = str(nds) + '0'
-    nds = str(nds)
-    nds = nds.replace('.', ',')
-    return nds
+    nds_str = str(nds)
+    if len(nds_str[nds_str.index('.'):-1:]) < 2:
+        nds_str += '0'
+    nds_str = nds_str.replace('.', ',')
+    return nds_str
 
 def copy_input():
     summ = entry.get()
@@ -19,10 +19,10 @@ def copy_input():
 
 def clear():
     entry.delete(0, 'end')
-    result_win_10 = tk.Button(win, text='', font=('Comic Sans MS', 20), fg='navy')
-    result_win_10.place(x=5, y=85, height=85, width=150)
-    result_win_20 = tk.Button(win, text='', font=('Comic Sans MS', 20), fg='navy')
-    result_win_20.place(x=160, y=85, height=85, width=150)
+    result_win_10 = tk.Button(win, text='Введите сумму\nдля расчёта', font=('Comic Sans MS', 20), fg='navy')
+    result_win_10.place(x=5, y=85, height=105, width=305)
+##    result_win_20 = tk.Button(win, text='', font=('Comic Sans MS', 20), fg='navy')
+    #result_win_20.place(x=160, y=85, height=105, width=150)
 
 def clear_esc(event):
     clear()
@@ -33,31 +33,39 @@ def clear_clipboard(event):
         clear()
 
 
-def asd(x):
-    def copy_result():
-        if result != 'Введите сумму':
-            pyperclip.copy(result)
-    try:
-        result = convert_nalog(copy_input(), x)
-    except ValueError:
-        result = 'Введите\nсумму'
-    if result == 'Введите\nсумму':
-        result_vew = result
-    else:
-        result_vew = result + ' ₽'
-    copy_result()
-    result_win_10 = tk.Button(win, text=result_vew, font=('Comic Sans MS', 20), fg='navy', command=copy_result)
-    result_win_10.place(x=5, y=85, height=85, width=150)
-    result_win_20 = tk.Button(win, text=result_vew, font=('Comic Sans MS', 20), fg='navy', command=copy_result)
-    result_win_20.place(x=160, y=85, height=85, width=150)
-
-
 def foo_nds():
-    def foo():
-        asd(10)
-        asd(20)
-    a = foo()
-    return a
+    def asd_10(tax):
+        def copy_result():
+            if result != 'Введите сумму':
+                pyperclip.copy(result)
+        try:
+            result = convert_nalog(copy_input(), tax)
+        except ValueError:
+            result = 'Введите\nсумму'
+        if result == 'Введите\nсумму':
+            result_vew = result
+        else:
+            result_vew = result + ' ₽'
+        result_win_10 = tk.Button(win, text=result_vew, font=('Comic Sans MS', 20),
+                                      fg='navy', command=copy_result)
+        result_win_10.place(x=5, y=85, height=105, width=150)
+    def asd_20(tax):
+        def copy_result():
+            if result != 'Введите сумму':
+                pyperclip.copy(result)
+        try:
+            result = convert_nalog(copy_input(), tax)
+        except ValueError:
+            result = 'Введите\nсумму'
+        if result == 'Введите\nсумму':
+            result_vew = result
+        else:
+            result_vew = result + ' ₽'
+        result_win_20 = tk.Button(win, text=result_vew, font=('Comic Sans MS', 20),
+                                  fg='navy', command=copy_result)
+        result_win_20.place(x=160, y=85, height=105, width=150)
+    asd_10(10)
+    asd_20(20)  
 
         
 def foo_nds_enter(event):
