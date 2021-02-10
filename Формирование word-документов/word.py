@@ -1,6 +1,8 @@
 import openpyxl
 from docxtpl import DocxTemplate
-
+import os
+import comtypes.client
+import time
 
 ##input('Нажмите "Enter" для запуска скрипта\n')
 
@@ -8,6 +10,11 @@ wb = openpyxl.load_workbook('Данные\\Данные.xlsx')
 sheet = wb.active
 n = sheet.max_row
 save_location = input('Введите адрес сохранения\n')
+if not os.path.isdir(save_location):
+    os.makedirs(save_location)
+save_location_pdf = save_location + '\\PDF'
+if not os.path.isdir(save_location_pdf):
+    os.mkdir(save_location_pdf)
 
 if '\\' in save_location:
     save_location.replace('\\', '\\\\')                 
@@ -26,8 +33,25 @@ for i in range(n):
         file = sheet['F' + str(i + 2)].value
         save_location_word = save_location + f'\\Письмо _{file}.docx'
         doc.save(save_location_word)
+
+        #новый фрагмент (создание pdf-файлов)
+
+        wdFormatPDF = 17
         
-##        print(f'Письмо _{file}.docx')
+        in_file = save_location_word
+        out_file = save_location_pdf + f'\\Письмо _{file}.pdf'
+        
+        word = comtypes.client.CreateObject('Word.Application')
+        word.Visible = True
+        time.sleep(3)
+
+        doc=word.Documents.Open(in_file)
+        doc.SaveAs(out_file, FileFormat=wdFormatPDF)
+        doc.Close()
+        word.Visible = False
         break
 
-input('Нажмите "Enter" для выхода')
+word.Quit()
+print ('Формирование документов завершено')
+
+##input('Нажмите "Enter" для выхода')
