@@ -30,8 +30,8 @@ for i in range(n):
         context = {'company': company, 'adress': adress, 'post': post,
                    'short_director': short_director, 'initials': initials}
         doc.render(context)
-        file = sheet['F' + str(i + 2)].value
-        save_location_word = save_location + f'\\Письмо _{file}.docx'
+        file = company[company.index('"')+1:-1]
+        save_location_word = save_location + f'\\Письмо [{file}].docx'
         doc.save(save_location_word)
 
         #новый фрагмент (создание pdf-файлов)
@@ -39,7 +39,7 @@ for i in range(n):
         wdFormatPDF = 17
         
         in_file = save_location_word
-        out_file = save_location_pdf + f'\\Письмо _{file}.pdf'
+        out_file = save_location_pdf + f'\\Письмо [{file}].pdf'
         
         word = comtypes.client.CreateObject('Word.Application')
         word.Visible = True
