@@ -13,11 +13,13 @@ text_new = []
 
 for i in text_list:
     if choice == 1:
-        if 'оф-2021-' not in i:
-            i = 'оф-2021-' + i
-            text_new.append(i)
-        elif 'оф-2021-' in i:
-            text_new.append(i)
+        text_new.append(i)
+##        if 'оф-2021-' not in i:
+##            i = 'оф-2021-' + i
+##            text_new.append(i)
+##        elif 'оф-2021-' in i:
+##            text_new.append(i)
+
     elif choice == 2:
         if 'т' not in i:
             i = 'т' + i
