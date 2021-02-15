@@ -3,24 +3,36 @@ from docxtpl import DocxTemplate
 import os
 import comtypes.client
 import time
+import tkinter as tk
 
-##input('Нажмите "Enter" для запуска скрипта\n')
 
-wb = openpyxl.load_workbook('Данные\\Данные.xlsx')
-sheet = wb.active
-n = sheet.max_row
-save_location = input('Введите адрес сохранения\n')
-if not os.path.isdir(save_location):
-    os.makedirs(save_location)
-
-if '\\' in save_location:
-    save_location.replace('\\', '\\\\')                 
-
-save_location_word = in_file = ''
-save_location_pdf = ''
-file = ''
+##wb = openpyxl.load_workbook('Данные\\Данные.xlsx')
+##sheet = wb.active
+##n = sheet.max_row
+##save_location = entry.get()
+##if not os.path.isdir(save_location):
+##    os.makedirs(save_location)
+##save_location_pdf = save_location + '\\PDF'
+##if not os.path.isdir(save_location_pdf):
+##    os.mkdir(save_location_pdf)
+##
+##if '\\' in save_location:
+##    save_location.replace('\\', '\\\\')                 
 
 def create_word():
+    wb = openpyxl.load_workbook('Данные\\Данные.xlsx')
+    sheet = wb.active
+    n = sheet.max_row
+    save_location = entry.get()
+    if not os.path.isdir(save_location):
+        os.makedirs(save_location)
+    
+    if not os.path.isdir(save_location_pdf):
+        os.mkdir(save_location_pdf)
+
+    if '\\' in save_location:
+        save_location.replace('\\', '\\\\')   
+
     for i in range(n):
         if i < (n-1):
             company = sheet['A' + str(i + 2)].value
@@ -35,11 +47,25 @@ def create_word():
             file = company[company.index('"')+1:-1]
             save_location_word = save_location + f'\\Письмо [{file}].docx'
             doc.save(save_location_word)
-##    word.Quit()
-    
+            
 
-#новый фрагмент (создание pdf-файлов)
+    word.Quit()
+    print ('Формирование Word-документов завершено')
+
 def create_with_pdf():
+    wb = openpyxl.load_workbook('Данные\\Данные.xlsx')
+    sheet = wb.active
+    n = sheet.max_row
+    save_location = entry.get()
+    if not os.path.isdir(save_location):
+        os.makedirs(save_location)
+    save_location_pdf = save_location + '\\PDF'
+    if not os.path.isdir(save_location_pdf):
+        os.mkdir(save_location_pdf)
+
+    if '\\' in save_location:
+        save_location.replace('\\', '\\\\')   
+
     for i in range(n):
         if i < (n-1):
             company = sheet['A' + str(i + 2)].value
@@ -70,16 +96,23 @@ def create_with_pdf():
             doc.SaveAs(out_file, FileFormat=wdFormatPDF)
             doc.Close()
             word.Visible = False
-            
-    word.Quit()
-    
+            break
 
-change = input('Для формирования word-документов нажмите >>> 1 <<<\nДля формирования pdf-документов нажмите >>> 2 <<<\n')
-if change == '1':
-    create_word()
-    print ('Формирование word-документов завершено')
-elif change == '2':
-    create_with_pdf()
-    print ('Формирование pdf-документов завершено')
-    
-##input('Нажмите "Enter" для выхода')
+
+win = tk.Tk()
+win.geometry('362x120+900+400')
+win.resizable(0, 0)
+
+enter = tk.Label(win, text='Введите адрес для сохранения файлов:')
+entry = tk.Entry(win)
+btn_word = tk.Button (win, text='Создать Word-документы', command=create_word)
+btn_pdf = tk.Button (win, text='Создать Word- и PDF-документы', command=create_with_pdf)
+
+
+enter.place(x=5, y=5, width=220, height=20)
+entry.place(x=5, y=30, width=352, height=30)
+btn_word.place(x=5, y=70, width=157, height=40)
+btn_pdf.place(x=170, y=70, width=187, height=40)
+
+entry.focus_set()
+win.mainloop()
