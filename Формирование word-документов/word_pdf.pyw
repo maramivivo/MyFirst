@@ -6,19 +6,6 @@ import time
 import tkinter as tk
 
 
-##wb = openpyxl.load_workbook('Данные\\Данные.xlsx')
-##sheet = wb.active
-##n = sheet.max_row
-##save_location = entry.get()
-##if not os.path.isdir(save_location):
-##    os.makedirs(save_location)
-##save_location_pdf = save_location + '\\PDF'
-##if not os.path.isdir(save_location_pdf):
-##    os.mkdir(save_location_pdf)
-##
-##if '\\' in save_location:
-##    save_location.replace('\\', '\\\\')                 
-
 def create_word():
     wb = openpyxl.load_workbook('Данные\\Данные.xlsx')
     sheet = wb.active
@@ -26,9 +13,6 @@ def create_word():
     save_location = entry.get()
     if not os.path.isdir(save_location):
         os.makedirs(save_location)
-    
-    if not os.path.isdir(save_location_pdf):
-        os.mkdir(save_location_pdf)
 
     if '\\' in save_location:
         save_location.replace('\\', '\\\\')   
@@ -48,8 +32,6 @@ def create_word():
             save_location_word = save_location + f'\\Письмо [{file}].docx'
             doc.save(save_location_word)
             
-
-    word.Quit()
     print ('Формирование Word-документов завершено')
 
 def create_with_pdf():
@@ -64,8 +46,9 @@ def create_with_pdf():
         os.mkdir(save_location_pdf)
 
     if '\\' in save_location:
-        save_location.replace('\\', '\\\\')   
+        save_location.replace('\\', '\\\\')
 
+##    ss = 0
     for i in range(n):
         if i < (n-1):
             company = sheet['A' + str(i + 2)].value
@@ -81,8 +64,7 @@ def create_with_pdf():
             save_location_word = save_location + f'\\Письмо [{file}].docx'
             doc.save(save_location_word)
 
-            #новый фрагмент (создание pdf-файлов)
-
+            # создание pdf-файлов
             wdFormatPDF = 17
             
             in_file = save_location_word
@@ -90,29 +72,33 @@ def create_with_pdf():
             
             word = comtypes.client.CreateObject('Word.Application')
             word.Visible = True
-            time.sleep(3)
+            time.sleep(1)
 
             doc=word.Documents.Open(in_file)
             doc.SaveAs(out_file, FileFormat=wdFormatPDF)
             doc.Close()
             word.Visible = False
-            break
+##            ss += 1
+##            if ss == 2:
+##                break
+        word.Quit()
 
 
 win = tk.Tk()
-win.geometry('362x120+900+400')
+win.geometry('370x120+900+400')
+win.title('Формирование документов по шаблону')
 win.resizable(0, 0)
 
-enter = tk.Label(win, text='Введите адрес для сохранения файлов:')
+enter = tk.Label(win, text='Введите адрес для сохранения документов:')
 entry = tk.Entry(win)
 btn_word = tk.Button (win, text='Создать Word-документы', command=create_word)
 btn_pdf = tk.Button (win, text='Создать Word- и PDF-документы', command=create_with_pdf)
 
 
-enter.place(x=5, y=5, width=220, height=20)
-entry.place(x=5, y=30, width=352, height=30)
-btn_word.place(x=5, y=70, width=157, height=40)
-btn_pdf.place(x=170, y=70, width=187, height=40)
+enter.place(x=8, y=5, width=230, height=20)
+entry.place(x=5, y=30, width=360, height=30)
+btn_word.place(x=5, y=70, width=160, height=40)
+btn_pdf.place(x=170, y=70, width=195, height=40)
 
 entry.focus_set()
 win.mainloop()
