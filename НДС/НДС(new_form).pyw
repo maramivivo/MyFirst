@@ -103,7 +103,7 @@ btn_calculate = tk.Button(win, text='Рассчитать\n(Enter)', font=('Taho
 btn_clear = tk.Button(win, text = 'Очистить\n(Esc)',
                       font=('Tahoma', 18), fg='grey45', command=clear)
 win.bind('<KeyPress-Escape>', clear_esc)
-win.bind('<KeyRelease-Return>', foo_nds_enter)
+win.bind('<Return>', foo_nds_enter)
 
 entry.place(x=230, y=5, height=40, width=315)
 enter.place(x=5, y=5, height=40, width=220)

@@ -1,6 +1,6 @@
 import pyperclip
 
-file = open(r'Текст.txt', 'r', encoding='utf8')
+file = open(r'Текст.txt', 'r+', encoding='utf8')
 text = file.read()
 
 text = text.lower()
@@ -13,12 +13,12 @@ text_new = []
 
 for i in text_list:
     if choice == 1:
-        text_new.append(i)
-##        if 'оф-2021-' not in i:
-##            i = 'оф-2021-' + i
-##            text_new.append(i)
-##        elif 'оф-2021-' in i:
-##            text_new.append(i)
+##        text_new.append(i)
+        if 'оф-2021-' not in i:
+            i = 'оф-2021-' + i
+            text_new.append(i)
+        elif 'оф-2021-' in i:
+            text_new.append(i)
 
     elif choice == 2:
         if 'т' not in i:
@@ -42,6 +42,8 @@ for i in text_new:
     count +=1
 
 pyperclip.copy(text) #копирование текста в буфер обмена
+file.write('\n')
+file.write(text)
 
 file.close()
 
