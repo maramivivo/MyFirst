@@ -43,7 +43,11 @@ for i in text_new:
 
 pyperclip.copy(text) #копирование текста в буфер обмена
 file.write('\n')
+file.write('')
+file.write('\n')
 file.write(text)
+file.write('')
+file.write('\n')
 
 file.close()
 
