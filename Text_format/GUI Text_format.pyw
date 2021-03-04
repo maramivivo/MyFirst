@@ -68,28 +68,29 @@ def convert_txt():
 
 
 win = tk.Tk()
-win.title('Преобразование: текста, номеров оферт, ID ...')
-win.geometry('560x180+890+320')
+win.title('Преобразование: Текста, Оферт, ID ...')
+win.geometry('560x207+890+320')
 win.resizable(0, 0)
 win.wm_iconbitmap('txt.ico')
 
-enter_text = tk.Label(win, text='Введите текст:', font=(12), anchor='w')
+enter_text = tk.Label(win, text='Вставьте текст:', font=(12), anchor='w')
 entry = tk.Entry(win, bg='white')
-splitter_label = tk.Label(win, text='Введите разделитель:', font=(10), anchor='w')
+splitter_label = tk.Label(win, text='Вставьте разделитель:', font=(11), anchor='w')
 splitter_entry = tk.Entry(win, bg='white', justify='center')
-offer_txt = tk.Button(win, text='Преобразовать\nоферты', command=convert_offer)
-id_txt = tk.Button(win, text='Преобразовать\nID', command=convert_id)
-txt = tk.Button(win, text='Преобразовать другой\nтекст и скопировать его', command=convert_txt)#, command=copy_txt)
-
+offer_txt = tk.Button(win, text='Оферты', font=(8), command=convert_offer)
+id_txt = tk.Button(win, text='Позиции каталога (ID)', font=(8), command=convert_id)
+txt = tk.Button(win, text='Любой текст', font=(8), command=convert_txt)
+convert_label = tk.Label(win, text='Преобразовать:', font=(11), anchor='sw')
 win.bind('<KeyPress-Escape>', clear_esc)
 
 enter_text.place(x=5, y=5, height=27, width=130)
 entry.place(x=130, y=5, height=27, width=425)
 splitter_label.place(x=5, y=37, height=27, width=170)
 splitter_entry.place(x=180, y=37, height=27, width=100)
-offer_txt.place(x=355, y=50, height=40, width=200)
-id_txt.place(x=355, y=95, height=40, width=200)
-txt.place(x=355, y=135, height=40, width=200)
+offer_txt.place(x=355, y=72, height=40, width=200)
+id_txt.place(x=355, y=117, height=40, width=200)
+convert_label.place(x=355, y=37, height=27, width=200)
+txt.place(x=355, y=162, height=40, width=200)
 
 
 entry.focus_set()
