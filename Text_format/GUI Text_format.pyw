@@ -1,9 +1,10 @@
 import tkinter as tk
+import tkinter.font
 import pyperclip
 
 
 def label(text):
-    result = tk.Label(win, text=text, font=('Comic Sans MS', 12))
+    result = tk.Label(win, text=text, font=('Comic Sans MS', 13))
     result.place(x=5, y=70, height=100, width=350)
 
 
@@ -73,23 +74,23 @@ win.geometry('560x207+890+320')
 win.resizable(0, 0)
 win.wm_iconbitmap('txt.ico')
 
-enter_text = tk.Label(win, text='Вставьте текст:', font=(12), anchor='w')
+enter_text = tk.Label(win, text='Вставьте текст:', font=tkinter.font.Font(size=11, weight='bold'), anchor='w')
 entry = tk.Entry(win, bg='white')
-splitter_label = tk.Label(win, text='Вставьте разделитель:', font=(11), anchor='w')
+splitter_label = tk.Label(win, text='Вставьте разделитель:', font=tkinter.font.Font(size=11, weight='bold'), anchor='w')
 splitter_entry = tk.Entry(win, bg='white', justify='center')
 offer_txt = tk.Button(win, text='Оферты', font=(8), command=convert_offer)
 id_txt = tk.Button(win, text='Позиции каталога (ID)', font=(8), command=convert_id)
 txt = tk.Button(win, text='Любой текст', font=(8), command=convert_txt)
-convert_label = tk.Label(win, text='Преобразовать:', font=(11), anchor='sw')
+convert_label = tk.Label(win, text='Преобразовать:', font=tkinter.font.Font(size=11, weight='bold'), anchor='w')
 win.bind('<KeyPress-Escape>', clear_esc)
 
-enter_text.place(x=5, y=5, height=27, width=130)
-entry.place(x=130, y=5, height=27, width=425)
-splitter_label.place(x=5, y=37, height=27, width=170)
-splitter_entry.place(x=180, y=37, height=27, width=100)
+enter_text.place(x=10, y=5, height=27, width=140)
+entry.place(x=145, y=5, height=27, width=410)
+splitter_label.place(x=10, y=37, height=27, width=190)
+splitter_entry.place(x=210, y=37, height=27, width=80)
 offer_txt.place(x=355, y=72, height=40, width=200)
 id_txt.place(x=355, y=117, height=40, width=200)
-convert_label.place(x=355, y=37, height=27, width=200)
+convert_label.place(x=355, y=41, height=27, width=200)
 txt.place(x=355, y=162, height=40, width=200)
 
 
