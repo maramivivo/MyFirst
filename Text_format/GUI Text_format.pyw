@@ -10,7 +10,7 @@ def label(text):
 
 def clear_esc(event):
     entry.delete(0, 'end')
-    splitter_entry.delete(0, 'end')
+##    splitter_entry.delete(0, 'end')
     label('')
     entry.focus_set()
     
@@ -75,9 +75,9 @@ win.resizable(0, 0)
 win.wm_iconbitmap('txt.ico')
 
 enter_text = tk.Label(win, text='Вставьте текст:', font=tkinter.font.Font(size=11, weight='bold'), anchor='w')
-entry = tk.Entry(win, bg='white')
+entry = tk.Entry(win, bg='white', font=(8))
 splitter_label = tk.Label(win, text='Вставьте разделитель:', font=tkinter.font.Font(size=11, weight='bold'), anchor='w')
-splitter_entry = tk.Entry(win, bg='white', justify='center')
+splitter_entry = tk.Entry(win, bg='white', justify='center', font=(8))
 offer_txt = tk.Button(win, text='Оферты', font=(8), command=convert_offer)
 id_txt = tk.Button(win, text='Позиции каталога (ID)', font=(8), command=convert_id)
 txt = tk.Button(win, text='Любой текст', font=(8), command=convert_txt)
@@ -93,6 +93,9 @@ id_txt.place(x=355, y=117, height=40, width=200)
 convert_label.place(x=355, y=41, height=27, width=200)
 txt.place(x=355, y=162, height=40, width=200)
 
+
+# значение по умолчанию
+splitter_entry.insert(0, '|')
 
 entry.focus_set()
 win.mainloop()

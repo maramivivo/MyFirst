@@ -1,3 +1,4 @@
+import pyperclip
 import openpyxl
 from docxtpl import DocxTemplate
 import os
@@ -5,11 +6,16 @@ import comtypes.client
 import time
 import tkinter as tk
 
+def clear_esc(event):
+    entry.delete(0, 'end')
+    entry.focus_set()
 
+    
 def create_word():
     wb = openpyxl.load_workbook('Данные\\Данные.xlsx')
     sheet = wb.active
     n = sheet.max_row
+    print(n)
     save_location = entry.get()
     if not os.path.isdir(save_location):
         os.makedirs(save_location)
@@ -33,6 +39,8 @@ def create_word():
             doc.save(save_location_word)
             
     print ('Формирование Word-документов завершено')
+    os.chdir(save_location)
+    pyperclip.copy(os.getcwd())
 
 def create_with_pdf():
     wb = openpyxl.load_workbook('Данные\\Данные.xlsx')
@@ -82,6 +90,8 @@ def create_with_pdf():
 ##            if ss == 2:
 ##                break
         word.Quit()
+        os.chdir(save_location)
+        pyperclip.copy(os.getcwd())
 
 
 win = tk.Tk()
@@ -89,13 +99,14 @@ win.geometry('370x120+900+400')
 win.title('Формирование документов по шаблону')
 win.resizable(0, 0)
 
-enter = tk.Label(win, text='Введите адрес для сохранения документов:')
+enter = tk.Label(win, text='Введите адрес для сохранения документов (или имя папки):', anchor='w')
 entry = tk.Entry(win)
 btn_word = tk.Button (win, text='Создать Word-документы', command=create_word)
 btn_pdf = tk.Button (win, text='Создать Word- и PDF-документы', command=create_with_pdf)
+win.bind('<KeyPress-Escape>', clear_esc)
 
 
-enter.place(x=8, y=5, width=230, height=20)
+enter.place(x=8, y=5, width=365, height=20)
 entry.place(x=5, y=30, width=360, height=30)
 btn_word.place(x=5, y=70, width=160, height=40)
 btn_pdf.place(x=170, y=70, width=195, height=40)
